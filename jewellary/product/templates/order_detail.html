@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Detail</title>
+</head>
+<body>
+    <h1>Order Details for {{ order }}</h1>
+    <p>Order Date: {{ order.order_date }}</p>
+    <p>User: {{ order.user.username }}</p>
+    <p>Product ID: {{ order.products_id }}</p>
+    <h2>Delivery Information</h2>
+    {% if delivery %}
+        <p>Address: {{ delivery.address }}</p>
+        <p>Email: {{ delivery.email }}</p>
+        <p>Phone Number: {{ delivery.phone_number }}</p>
+        <p>Delivery Date: {{ delivery.delivery_date }}</p>
+    {% else %}
+        <p>No delivery information available.</p>
+    {% endif %}
+    <a href="{% url 'order_list' %}">Back to Orders</a>
+</body>
+</html>
