@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Order, Delivery 
+from .models import *
 
 admin.site.register(Order)
 admin.site.register(Delivery)
+admin.site.register(Product)
+admin.site.register(Category)
+admin.site.register(Material)

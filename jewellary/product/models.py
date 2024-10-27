@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
+
+class Material(models.Model):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return f"{self.name}"
+
+class Category(models.Model):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return f"{self.name}"
 class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.IntegerField()
@@ -9,7 +22,8 @@ class Product(models.Model):
     weight = models.IntegerField()
     color = models.CharField(max_length=50)
     gender = models.CharField(max_length=100)
-
+    material = models.ForeignKey(Material, on_delete=models.CASCADE, related_name='products', blank=True, null=True)  # Connect to Material
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', blank=True, null=True)  # Connect to Category
     def __str__(self):
         return f"{self.name} {self.price} {self.gender}"
 
@@ -39,17 +53,6 @@ class Delivery(models.Model):
         self.delivery_date = timezone.now().date()
         self.save()
 
-class Material(models.Model):
-    name = models.CharField(max_length=250)
-
-    def __str__(self):
-        return f"{self.name}"
-
-class Category(models.Model):
-    name = models.CharField(max_length=250)
-
-    def __str__(self):
-        return f"{self.name}"
 
 class About(models.Model):
     address = models.CharField(max_length=255)
