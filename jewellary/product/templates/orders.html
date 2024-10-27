@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status</title>
+    <style>
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+        .status-inactive {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Status</h1>
+
+    {% if order.is_active %}
+        <p class="status-active">Ваш заказ активен</p>
+    {% else %}
+        <p class="status-inactive">Ваш заказ неактивен</p>
+    {% endif %}
+
+    <p>Product ID: {{ product.id }}</p>
+    <p>Product Name: {{ product.name }}</p>
+</body>
+</html>
